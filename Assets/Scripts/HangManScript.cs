@@ -16,6 +16,8 @@ public class HangManScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _textField;
     [SerializeField] private int hp = 7;
     
+    
+    
     private List<char> guessedLetters = new List<char>();
     
     private List<char> wrongTriedLetter = new List<char>();
@@ -29,7 +31,7 @@ public class HangManScript : MonoBehaviour
         "Glitch"
     };
 
-    
+   
     
     private string wordToGuess = "";
 
