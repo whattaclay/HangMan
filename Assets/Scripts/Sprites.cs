@@ -7,21 +7,21 @@ using Button = UnityEngine.UI.Button;
 
 namespace DefaultNamespace
 {
-    public class sprites : MonoBehaviour
+    public class Sprites : MonoBehaviour
     {
-        [SerializeField] private Button hmGameObject;
-        private int hp;
-        [SerializeField] private TextMeshProUGUI hpCounter;
-        public Sprite[] spriteImages;
+        [SerializeField] private Button hmGameObject;//добавляю кнопку, котрая будет менять на себе спрайты
+        private int hp;//переменная, чтобы считывать показания HP с текста в сцене
+        [SerializeField] private TextMeshProUGUI hpCounter;//переменная, чтобы работать с текстом hp со сцены
+        public Sprite[] spriteImages;//задаем массив спрайтов
         void Update()
         {
-            hp = hpCounter.text[0];
+            hp = hpCounter.text[0];//собственно считываем текст hp со сцены;
             
            
-            switch (hp)
+            switch (hp)//если хп соответствует  case(true) то выполняется действие
             {
                 case 54: 
-                    hmGameObject.image.sprite = spriteImages[0];
+                    hmGameObject.image.sprite = spriteImages[0];//загружается картинка из массива под номером "0"
                     
                     break;
                 case 53: 

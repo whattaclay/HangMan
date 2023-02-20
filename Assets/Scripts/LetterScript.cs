@@ -8,11 +8,11 @@ using UnityEngine.Serialization;
 
 public class LetterScript : MonoBehaviour
 {   
-    [SerializeField] private TextMeshProUGUI _guesedWord;
-    [SerializeField] private GameObject panel;
-    [SerializeField] private TextMeshProUGUI _keyText;
+    [SerializeField] private TextMeshProUGUI _guesedWord;/*угадываемое слово*/
+    [SerializeField] private GameObject panel;/* крестик на неправильных буквах */
+    [SerializeField] private TextMeshProUGUI _keyText;/* буква с клавиатуры*/
 
-    private float countDown;
+    
 
     private KeyCode lastKeyPressed;
 
@@ -33,16 +33,17 @@ public class LetterScript : MonoBehaviour
         }
     }
 
-    public void ProcessKey(KeyCode key)
+    public void ProcessKey(KeyCode key)//происходит по нажатию клавиши
     {
-        char pressedKeyString = key.ToString()[0];
+        char pressedKeyString = key.ToString()[0]; //символьная переменная равная вводимому символу
 
-        string wordUppercase = _guesedWord.text.ToUpper();
+        string wordUppercase = _guesedWord.text.ToUpper();//переводим угадываемое слово в "словокапсом"
         
        
-        if (!wordUppercase.Contains(pressedKeyString) && pressedKeyString == _keyText.text[0])
+        if (!wordUppercase.Contains(pressedKeyString) && pressedKeyString == _keyText.text[0]) /*условие: если угадываемое 
+        слово не содержит вводимый символ и вводимый символ равен символу с клавиатуры(из сцены)*/
         {
-                panel.SetActive(true);
+                panel.SetActive(true);//включаем панель на сцене(красный крестик)
         }
         
     }
