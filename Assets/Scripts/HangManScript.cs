@@ -11,8 +11,8 @@ using UnityEngine.SceneManagement;
 public class HangManScript : MonoBehaviour
 {
    // [SerializeField] - чтобы можно было менять private переменную в приложении Unity
-   
 
+    [SerializeField] private TextMeshProUGUI _hints;
     [SerializeField] private TextMeshProUGUI _hpText; /*TextMeshProUGUI- текстовый класс Unity*/
     [SerializeField] private TextMeshProUGUI _textForScript;
     [SerializeField] private TextMeshProUGUI _textField;
@@ -30,12 +30,34 @@ public class HangManScript : MonoBehaviour
     {
         "Ball",
         "Girl",
-        "Effect",
+        "Suspect",
         "Mouse",
-        "Glitch"
+        "Glitch",
+        "Grenade",
+        "Pencil",
+        "Flowers",
+        "Tea",
+        "Pig",
+        "Mushrooms"
+    };
+    
+    private string[] hints =
+    {
+        "A round object used in different games.",
+        "Boys and ...",
+        "People at crime case.",
+        "Animal and computer device.",
+        "A short-lived fault in a system.",
+        "Round weapon that explodes after time.",
+        "Cylinder thing for drawing.",
+        "Girls love gift like that.",
+        "England people like to drink.",
+        " 'SALO' ",
+        "Grows in forests on the ground."
     };
 
    
+    private string hintWord = "Hint:";
     
     private string wordToGuess = "";/*задаем угадываемуму слову тип String*/
 
@@ -47,6 +69,8 @@ public class HangManScript : MonoBehaviour
         int randomIndex = Random.Range(0, words.Length);
         /*присваиваем слово из массива с порядковым номером randomIndex, угадываемому слову*/
         wordToGuess = words[randomIndex];
+        
+        hintWord += hints[randomIndex];/*добавляем слово из массива подсказок с порядковым номером randomIndex к подсказке*/
         /*задем строковую переменную initialWord(начальное слово)*/
         string initialWord = "";
         for (int i = 0; i < wordToGuess.Length; i++)/*создаем цикл, в котором добовляем в переменную 
@@ -61,6 +85,8 @@ public class HangManScript : MonoBehaviour
         _textForScript.text = wordToGuess.ToUpper();
         /*присваиваю значение hp тексту в сцене, попутно переведя переменную типа integer в string*/
         _hpText.text = hp.ToString();
+
+        _hints.text = hintWord;
     }
     
     private void OnGUI()/* код для чтения вводимых клавиш с клавиатуры*/
